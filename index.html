@@ -1,0 +1,67 @@
+<title>Local Storage - JavaScript</title>
+
+<style media="screen">
+    input,
+    button {
+        padding: 7px;
+        height: 40px;
+    }
+
+    fieldset {
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <h2 id="title">Local Storage - JavaScript</h2>
+    <fieldset>
+        <legend>Insert Data</legend>
+        <input id="inpKey" type="text" placeholder="Enter Key">
+        <input id="inpValue" type="text" placeholder="Enter Value">
+        <button type="button" id="btnInsert" onclick="insertObj()">Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Local Storage</legend>
+        <div id="isOutput"></div>
+    </fieldset>
+    <button type="button" id="btnDelete" onclick="myobj()">Delete Data</button>
+
+</body>
+
+<script type="text/javascript">
+    const inpKey = document.getElementById("inpKey");
+    const inpValue = document.getElementById("inpValue");
+    const btnInsert = document.getElementById("btnInsert");
+    const btnDelete = document.getElementById("btnDelete");
+    const isOutput = document.getElementById("isOutput");
+
+    function insertObj() {
+        const key = inpKey.value;
+        const value = inpValue.value;
+        if (key && value) {
+            localStorage.setItem(key, value);
+            location.reload();
+        }
+    };
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        isOutput.innerHTML += `${key}: ${value}<br />`;
+    }
+
+    function myobj() {
+        localStorage.clear()
+        isOutput.innerHTML = ''
+        // const key = inpKey.value;
+        // const value = inpValue.value;
+
+        // if (key && value) {
+        //     localStorage.removeItem(key, value);
+        //     location.reload();
+        // }
+    };
+
+
+
+</script>
